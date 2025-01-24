@@ -1,0 +1,21 @@
+﻿<h2>Factures for @ViewBag.PatientName</h2>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Facture ID</th>
+            <th>Amount</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var facture in Model)
+        {
+            <tr>
+                <td>@facture.Id</td>
+                <td>@facture.Amount</td>
+                <td>@facture.Date.ToString("MM/dd/yyyy hh:mm tt")</td> 
+            </tr>
+        }
+    </tbody>
+</table>

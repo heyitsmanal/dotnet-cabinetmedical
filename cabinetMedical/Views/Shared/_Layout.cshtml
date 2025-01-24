@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - cabinetMedical</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/cabinetMedical.styles.css" asp-append-version="true" />
+
+
+ 
+
+    <!-- Vendor CSS Files -->
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/vendor/aos/aos.css" rel="stylesheet">
+    <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Main CSS File -->
+    <link href="/css/main.css" rel="stylesheet">
+
+
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <!-- Branding Section -->
+                <div class="branding d-flex align-items-center">
+                    <div class="container position-relative d-flex align-items-center justify-content-between">
+                        <a class="logo d-flex align-items-center me-auto" asp-area="" asp-controller="Home" asp-action="Index">
+                            <h1 class="sitename">TeleDoK</h1>
+                        </a>
+
+                        <!-- Links visible only when the user is not authenticated -->
+                        @if (!User.Identity.IsAuthenticated)
+                        {
+                            <nav id="navmenu" class="navmenu">
+                                <ul>
+                                    <li><a href="#hero" class="active">Accueil<br></a></li>
+                                    <li><a href="#about">À propos</a></li>
+                                    <li><a href="#services">Services</a></li>
+                                    <li><a href="#departments">Départements</a></li>
+                                    <li><a href="#doctors">Médecins</a></li>
+                                    <li><a href="#contact">Contact</a></li>
+                                </ul>
+                            </nav>
+                        }
+                    </div>
+                </div>
+
+                <!-- Main Navbar -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                       
+
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <!-- Notifications link for all authenticated users except infirmiere -->
+                            @if (!User.IsInRole("infirmiere"))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Notifications" asp-action="Index">Notifications</a>
+                                </li>
+                            }
+
+                            @if (User.IsInRole("patient"))
+                            {
+                                <!-- Dashboard for Patient -->
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Patients" asp-action="Dashboard">Dashboard</a>
+                                </li>
+                            }
+                            else if (User.IsInRole("medecin"))
+                            {
+                                <!-- Dashboard for Medecin -->
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Medecins" asp-action="Dashboard">Dashboard</a>
+                                </li>
+                            }
+                            else if (User.IsInRole("admin"))
+                            {
+                                <!-- Dashboard for Admin -->
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Admins" asp-action="Dashboard">Dashboard</a>
+                                </li>
+                            }
+                            else if (User.IsInRole("infirmiere"))
+                            {
+                                <!-- Dashboard for Infirmiere -->
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Infirmieres" asp-action="Dashboard">Dashboard</a>
+                                </li>
+                            }
+                        }
+                        <partial name="_LoginPartial" />
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2025 - cabinetMedical - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

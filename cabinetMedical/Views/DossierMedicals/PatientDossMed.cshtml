@@ -1,0 +1,35 @@
+﻿@model cabinetMedical.Models.DossierMedical
+
+@{
+    ViewData["Title"] = "My Dossier Medical";
+}
+
+<div class="container mt-5">
+    <h2 class="">My Dossier Medical</h2>
+    <hr />
+
+    @if (Model != null)
+    {
+        <div class="card">
+            <div class="card-header">
+                <strong>Dossier ID:</strong> @Model.Id
+            </div>
+            <div class="card-body">
+                <p><strong>Description:</strong> @Model.Description</p>
+                <p><strong>Creation Date:</strong> @Model.DateCréation?.ToShortDateString()</p>
+                <p><strong>Doctor:</strong> @Model.Médecin.Nom</p>
+                <p><strong>Specialty:</strong> @Model.Médecin.Spécialité</p>
+            </div>
+        </div>
+
+        <hr />
+
+     
+    }
+    else
+    {
+        <div class="alert alert-warning ">
+            No Dossier Medical Found.
+        </div>
+    }
+</div>

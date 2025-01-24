@@ -1,0 +1,175 @@
+﻿@{
+    ViewData["Title"] = "Medecin Dashboard";
+}
+
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .card {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds the floating effect */
+        transition: transform 0.2s; /* Smooth transition on hover */
+        height: 300px; /* Makes the cards longer in height */
+        position: relative; /* To position the pricing inside the card */
+        border-radius: 10px; /* Rounded corners */
+        overflow: hidden; /* Ensures content doesn't overflow */
+    }
+
+        .card:hover {
+            transform: translateY(-10px); /* Lifts the card slightly on hover */
+        }
+
+    .card__content {
+        position: relative;
+        background-color: #fff;
+        padding: 2rem 1.5rem 2.5rem;
+        border-radius: .5rem;
+        box-shadow: 0 12px 24px hsla(210, 61%, 16%, 0.1);
+        transition: .4s;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+
+        .card__content:hover {
+            box-shadow: 0 16px 24px hsla(210, 61%, 16%, 0.4);
+        }
+
+    .card__pricing {
+        position: absolute;
+        width: 200px;
+        height: 119px;
+        top: 0;
+        left: -75px;
+        transform: rotateY(75deg);
+        border-radius: 0 100px 100px 0 / 0 20px 20px 0;
+        box-shadow: 0 16px 24px hsla(210, 61%, 16%, 0.15);
+    }
+
+        .card__pricing::after {
+            content: '';
+            position: absolute;
+            width: 14px;
+            height: 164px;
+            top: -20px;
+            left: 2px;
+            border-radius: 50px 0 0 50px / 80px 0 0 80px;
+        }
+
+    /* Custom colors for each card */
+    .card-consultations .card__pricing {
+        background-color: #4682B4; /* SteelBlue */
+    }
+
+    .card-dossier-medicals .card__pricing {
+        background-color: #FF6347; /* Tomato */
+    }
+
+    .card-plannings .card__pricing {
+        background-color: #301934; /* Tomato */
+    }
+
+
+    .card-medicaments .card__pricing {
+        background-color: #32CD32; /* LimeGreen */
+    }
+
+    .card__button {
+        padding: 1.25rem;
+        border: none;
+        font-size: .938rem;
+        border-radius: .5rem;
+        background: linear-gradient(157deg, hsl(210, 96%, 54%) -12%, hsl(210, 96%, 54%) 109%);
+        color: #fff;
+        cursor: pointer;
+        transition: .4s;
+        width: 95%;
+        font-weight: bold;
+        text-decoration: none;
+        margin: 5px; /* Center the button */
+    }
+
+        .card__button:hover {
+            box-shadow: 0 16px 24px hsla(210, 61%, 16%, 0.15);
+        }
+
+    /* Flex layout adjustments */
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px; /* Adjust gap between cards */
+        justify-content: space-between; /* Distribute cards evenly */
+    }
+
+    .col-md-4 {
+        flex: 1 1 calc(33.33% - 20px); /* Ensures 3 cards per row with spacing */
+        max-width: 33.33%; /* Maximum width for each column */
+    }
+</style>
+
+<div class="container mt-5">
+    <!-- Existing Cards -->
+    <div class="row">
+        <!-- Consultations Card -->
+        <div class="col-md-4 mb-4">
+            <div class="card text-center card-consultations">
+                <div class="card__content">
+                    <div class="card__pricing"></div>
+                    <h1>Manage Consultations</h1>
+                    <p>@ViewBag.ConsultationsCount</p>
+                </div>
+                <a href="@Url.Action("Index", "Consultations")" class="card__button">View Details</a>
+            </div>
+        </div>
+
+        <!-- Dossier Médicaux Card -->
+        <div class="col-md-4 mb-4">
+            <div class="card text-center card-dossier-medicals">
+                <div class="card__content">
+                    <div class="card__pricing"></div>
+                    <h1>Manage Medical Records</h1>
+                    <p>@ViewBag.DossierMedicalsCount</p>
+                </div>
+                <a href="@Url.Action("Index", "DossierMedicals")" class="card__button">View Details</a>
+            </div>
+        </div>
+
+        <!-- Medicaments Card -->
+        <div class="col-md-4 mb-4">
+            <div class="card text-center card-medicaments">
+                <div class="card__content">
+                    <div class="card__pricing"></div>
+                    <h1>Manage Medicaments</h1>
+                    <p>@ViewBag.MedicamentsCount</p>
+                </div>
+                <a href="@Url.Action("Index", "Medicaments")" class="card__button">View</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Planning Section -->
+    <div class="mt-5">
+       
+            <div class="row">
+                    <div class="col-md-4 mb-4">
+                        <div class="card text-center card-plannings">
+                            <div class="card__content">
+                                <h2 class=" mb-4">See Plannings</h2>
+                                <div class="card__pricing"></div>
+                            </div>
+                            <a href="@Url.Action("Index", "Plannings")" class="card__button">View</a>
+                        </div>
+                    </div>
+            </div>
+    </div>
+</div>
+

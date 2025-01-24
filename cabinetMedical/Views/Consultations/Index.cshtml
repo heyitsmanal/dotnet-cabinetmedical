@@ -1,0 +1,63 @@
+﻿@model IEnumerable<cabinetMedical.Models.Consultation>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="my-4">Consultations</h1>
+
+<p>
+    @if (!User.IsInRole("infirmiere"))
+    {
+        <a class="btn btn-success" asp-action="Create">Create New</a>
+    }
+</p>
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DossierMédical)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Médecin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Patient)
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DossierMédical.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Médecin.Nom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Patient.Nom)
+                </td>
+                <td>
+                    @if (!User.IsInRole("infirmiere"))
+                    {
+                        <a class="btn btn-warning btn-sm" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                        @:|
+                        <a class="btn btn-info btn-sm" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                        @:|
+                        <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

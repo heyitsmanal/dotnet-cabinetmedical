@@ -1,0 +1,53 @@
+﻿@{
+    var notifications = ViewBag.Notifications as IEnumerable<dynamic>;
+    var isPatient = ViewBag.IsPatient;
+    var isMedecin = ViewBag.IsMedecin;
+    var isAdmin = ViewBag.IsAdmin; // Assuming this value is passed from your controller
+}
+
+<h1>Notifications</h1>
+
+
+@if (!isPatient && !isMedecin && !isAdmin)  // Only show the "Create New" button for non-patient, non-medecin, and non-admin users
+{
+    <p>
+        <a asp-action="Create" class="btn btn-success">Create New</a>
+    </p>
+}
+
+
+
+
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th>Message</th>
+            <th>Date</th>
+            <th>Medecin</th>
+            <th>Patient</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in notifications)
+        {
+            <tr>
+                <td>@item.Message</td>
+                <td>@item.Date.ToString("dd/MM/yyyy")</td>
+                <td>@item.MedecinName</td>
+                <td>@item.PatientName</td>
+                <td>
+                    @if (!isPatient && !isMedecin && !isAdmin)
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning btn-sm">Edit</a>
+                        @: |
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info btn-sm">Details</a>
+                        @: |
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Delete</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

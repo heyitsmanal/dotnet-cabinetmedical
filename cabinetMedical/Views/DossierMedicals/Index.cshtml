@@ -1,0 +1,50 @@
+﻿@model IEnumerable<cabinetMedical.Models.DossierMedical>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+    <h1 class="text-center">Dossier Médical Index</h1>
+
+    <p>
+        <a asp-action="Create" class="btn btn-primary">Create New</a>
+    </p>
+
+    @if (Model != null && Model.Any())
+    {
+        <table class="table table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Description)</th>
+                    <th>@Html.DisplayNameFor(model => model.DateCréation)</th>
+                    <th>@Html.DisplayNameFor(model => model.Médecin)</th>
+                    <th>@Html.DisplayNameFor(model => model.Patient)</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                        <td>@Html.DisplayFor(modelItem => item.DateCréation)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Médecin.Nom)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Patient.Nom)</td>
+                        <td>
+                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info btn-sm">Details</a>
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning btn-sm">Edit</a>
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div class="alert alert-warning text-center">
+            No Dossiers Médicaux found.
+        </div>
+    }
+

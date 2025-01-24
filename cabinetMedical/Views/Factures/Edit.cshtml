@@ -1,0 +1,61 @@
+﻿@model CabinetMedical.Models.Facture
+
+@{
+    ViewData["Title"] = "Edit Facture";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="my-4">Edit Facture</h1>
+
+<h4>Facture</h4>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+
+            <!-- Amount -->
+            <div class="form-group">
+                <label asp-for="Amount" class="control-label"></label>
+                <input asp-for="Amount" class="form-control" />
+                <span asp-validation-for="Amount" class="text-danger"></span>
+            </div>
+
+            <!-- Date -->
+            <div class="form-group">
+                <label asp-for="Date" class="control-label"></label>
+                <input asp-for="Date" class="form-control" type="date" />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+
+            <!-- Patient Dropdown -->
+            <div class="form-group">
+                <label asp-for="PatientId" class="control-label"></label>
+                <select asp-for="PatientId" class="form-control" asp-items="ViewBag.Patients"></select>
+                <span asp-validation-for="PatientId" class="text-danger"></span>
+            </div>
+
+            <!-- Consultation Date Dropdown -->
+            <div class="form-group">
+                <label asp-for="ConsultationId" class="control-label"></label>
+                <select asp-for="ConsultationId" class="form-control" asp-items="ViewBag.Consultations"></select>
+                <span asp-validation-for="ConsultationId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="mt-4">
+    <a class="btn btn-secondary" asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

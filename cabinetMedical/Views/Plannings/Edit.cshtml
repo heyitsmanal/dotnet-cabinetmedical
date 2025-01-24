@@ -1,0 +1,57 @@
+﻿@model cabinetMedical.Models.Planning
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Planning</h4>
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <!-- Hidden Field for Id -->
+            <input type="hidden" asp-for="Id" />
+
+            <!-- Type Field -->
+            <div class="form-group">
+                <label asp-for="Type" class="control-label"></label>
+                <input asp-for="Type" class="form-control" />
+                <span asp-validation-for="Type" class="text-danger"></span>
+            </div>
+
+            <!-- DateDébut Field -->
+            <div class="form-group">
+                <label asp-for="DateDébut" class="control-label"></label>
+                <input asp-for="DateDébut" class="form-control" type="datetime-local" />
+                <span asp-validation-for="DateDébut" class="text-danger"></span>
+            </div>
+
+            <!-- DateFin Field -->
+            <div class="form-group">
+                <label asp-for="DateFin" class="control-label"></label>
+                <input asp-for="DateFin" class="form-control" type="datetime-local" />
+                <span asp-validation-for="DateFin" class="text-danger"></span>
+            </div>
+
+            <!-- Save Button -->
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" class="btn btn-secondary mt-4" >Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

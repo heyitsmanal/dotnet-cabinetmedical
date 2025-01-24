@@ -1,0 +1,55 @@
+﻿@model cabinetMedical.Models.Patient
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1 class="mb-4">Create New Patient</h1>
+
+<h4>Patient</h4>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+            <!-- Patient ID -->
+            <div class="form-group">
+                <label asp-for="Id" class="control-label">Patient ID</label>
+                <input asp-for="Id" class="form-control" />
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>
+
+            <!-- Name -->
+            <div class="form-group">
+                <label asp-for="Nom" class="control-label">Name</label>
+                <input asp-for="Nom" class="form-control" />
+                <span asp-validation-for="Nom" class="text-danger"></span>
+            </div>
+
+            <!-- Address -->
+            <div class="form-group">
+                <label asp-for="Adresse" class="control-label">Address</label>
+                <input asp-for="Adresse" class="form-control" />
+                <span asp-validation-for="Adresse" class="text-danger"></span>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="form-group mt-4">
+                <input type="submit" value="Create" class="btn btn-success" />
+            </div>
+
+            @Html.AntiForgeryToken()
+        </form>
+    </div>
+</div>
+
+<div class="mt-3">
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

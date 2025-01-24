@@ -1,0 +1,121 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Login";
+}
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
+</head>
+
+<div class="login-container d-flex justify-content-center align-items-center vh-100">
+    <div class="card shadow-sm p-4" style="width: 360px;">
+        <h2 class="text-center mb-4">Login</h2>
+        <form id="account" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+
+            <!-- Username Field -->
+            <div class="mb-3">
+                <label for="email" class="form-label">Username</label>
+                <input asp-for="Input.Email" class="form-control rounded-pill" autocomplete="username" placeholder="Enter username" id="email" />
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+
+            <!-- Password Field -->
+            <div class="mb-3 position-relative">
+                <label for="password-field" class="form-label">Password</label>
+                <input asp-for="Input.Password" type="password" id="password-field" class="form-control rounded-pill" autocomplete="current-password" placeholder="Enter password" />
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+                <button type="button" class="btn btn-sm btn-outline-secondary position-absolute" style="right: 10px; top: 70%; transform: translateY(-50%);" id="toggle-password">
+                    <i class="fas fa-eye" id="eye-icon"></i>
+                </button>
+            </div>
+
+            <!-- Login Button -->
+            <div class="d-grid mb-3">
+                <button id="login-submit" type="submit" class="btn btn-primary btn-lg rounded-pill">Login</button>
+            </div>
+
+            <!-- Additional Links -->
+            <div class="text-center">
+                <p class="mb-1">
+                    <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
+                </p>
+                <p class="mb-1">
+                    <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Don't have an account? Sign Up</a>
+                </p>
+                <p>
+                    <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Resend email confirmation</a>
+                </p>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+<style>
+    
+
+    .card {
+        border-radius: 12px;
+        background-color: #f8f9fa;
+    }
+
+    .form-label {
+        color: #6c757d;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+    }
+
+    .form-control {
+        border-radius: 50px;
+    }
+
+    .btn-primary {
+        background-color: #0d6efd;
+        border-color: #0d6efd;
+    }
+
+    .btn-outline-secondary {
+        border: none;
+    }
+
+        .btn-outline-secondary:hover {
+            background-color: transparent;
+        }
+
+    .btn-primary:hover {
+        background-color: #0b5ed7;
+        border-color: #0b5ed7;
+    }
+
+    .rounded-pill {
+        border-radius: 50px !important;
+    }
+
+    .fas.fa-eye {
+        font-size: 18px;
+        cursor: pointer;
+    }
+</style>
+
+<script>
+    // Password visibility toggle
+    document.getElementById("toggle-password").addEventListener("click", function () {
+        const passwordField = document.getElementById("password-field");
+        const eyeIcon = document.getElementById("eye-icon");
+
+        if (passwordField.type === "password") {
+            passwordField.type = "text";
+            eyeIcon.classList.remove("fa-eye");
+            eyeIcon.classList.add("fa-eye-slash");
+        } else {
+            passwordField.type = "password";
+            eyeIcon.classList.remove("fa-eye-slash");
+            eyeIcon.classList.add("fa-eye");
+        }
+    });
+</script>

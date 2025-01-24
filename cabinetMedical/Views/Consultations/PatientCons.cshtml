@@ -1,0 +1,55 @@
+﻿@model IEnumerable<cabinetMedical.Models.Consultation>
+
+@{
+    ViewData["Title"] = "My Consultations";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center">My Consultations</h2>
+    <hr />
+
+    @if (Model != null && Model.Any())
+    {
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Date</th>
+                    <th>Description</th>
+                    <th>Doctor</th>
+                    <th>Medications</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var consultation in Model)
+                {
+                    <tr>
+                        <td>@(consultation.Date?.ToString("MM/dd/yyyy") ?? "N/A")</td> <!-- Proper Date Handling -->
+                        <td>@(consultation.DossierMédical?.Description ?? "No Description")</td> <!-- Default for Reason -->
+                        <td>@(consultation.Médecin?.Nom ?? "N/A")</td> <!-- Default for Doctor -->
+                        <td>
+                            @if (consultation.Medicaments != null && consultation.Medicaments.Any())
+                            {
+                                <ul class="list-unstyled">
+                                    @foreach (var medicament in consultation.Medicaments)
+                                    {
+                                        <li>@medicament.Nom</li>
+                                    }
+                                </ul>
+                            }
+                            else
+                            {
+                                <span>No medications prescribed.</span>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div class="alert alert-warning text-center">
+            No consultations found.
+        </div>
+    }
+</div>

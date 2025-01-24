@@ -1,0 +1,39 @@
+﻿@model cabinetMedical.Models.Planning
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1 class="mb-4">Planning Details</h1>
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Planning Details</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.Type)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Type)
+            </dd>
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.DateDébut)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.DateDébut)
+            </dd>
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.DateFin)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.DateFin)
+            </dd>
+        </dl>
+    </div>
+</div>
+
+<div class="mt-3">
+    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-warning">Edit</a>
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</div>
