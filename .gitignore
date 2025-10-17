@@ -1,0 +1,35 @@
+﻿# --- Build outputs ---
+bin/
+obj/
+out/
+
+# --- User/IDE specific ---
+.vs/
+.vscode/
+*.user
+*.suo
+
+# --- OS junk ---
+.DS_Store
+Thumbs.db
+
+# --- Logs / temp ---
+*.log
+*.tlog
+*.tmp
+*.bak
+
+# --- NuGet / Packages cache ---
+*.nupkg
+*.snupkg
+packages/
+.nuget/
+
+# --- ASP.NET dev certs / secrets (kept outside repo ideally) ---
+*.pfx
+*.p12
+
+# --- Node / web ---
+node_modules/
+dist/
+wwwroot/lib/
