@@ -22,6 +22,12 @@ Focus: patients, appointments, and basic admin workflows.
 - **Data:** Entity Framework Core (SQLite/SQL Server)
 - **Tooling:** Git, PowerShell, dotnet CLI
 
+## 🖼️ Demo Screenshots
+
+
+
+
+
 ## 🚀 Quick Start
 
 > Prereqs: [.NET SDK 8](https://dotnet.microsoft.com/en-us/download)
