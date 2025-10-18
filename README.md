@@ -26,6 +26,8 @@ Focus: patients, appointments, and basic admin workflows.
 ## 🖼️ Demo Screenshots
 
 <div align="center">
+  <img src="https://github.com/user-attachments/assets/0bd1f95b-044b-4612-9f58-70cc9b1dc59a" alt="Homepage (full length)" width="60%">
+   <br/>
   <img src="https://github.com/user-attachments/assets/924bb94b-117a-4e16-a19a-5976fb09aca5" alt="Account-Register" width="49%">
   <img src="https://github.com/user-attachments/assets/79637aa0-2950-4a78-b0a7-3d8312a46588" alt="Account-Login" width="49%">
   <br/>
@@ -34,8 +36,6 @@ Focus: patients, appointments, and basic admin workflows.
   <br/>
   <img src="https://github.com/user-attachments/assets/2029a965-ffc1-45a3-b6db-efb22dbb0c9d" alt="Medecins-Dashboard" width="49%">
   <img src="https://github.com/user-attachments/assets/2cc57b88-bb4e-49f4-b372-40446ade40c7" alt="Patients-DossierMedicals" width="49%">
-  <br/>
-  <img src="https://github.com/user-attachments/assets/0bd1f95b-044b-4612-9f58-70cc9b1dc59a" alt="Homepage (full length)" width="60%">
 </div>
 
 
