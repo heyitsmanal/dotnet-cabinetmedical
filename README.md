@@ -14,7 +14,6 @@ Focus: patients, appointments, and basic admin workflows.
 - Appointment scheduling & listing
 - Basic search/filtering
 - Validation and error handling
-- (Extend here: prescriptions, billing, auth, roles…)
 
 ## 🧰 Tech Stack
 - **Backend:** ASP.NET Core MVC (.NET 8)
@@ -56,3 +55,7 @@ dotnet build
 # 3) Run the web app
 dotnet run --project .\CabinetMedical\CabinetMedical.csproj
 # App will print a URL like http://localhost:5xxx — open it in the browser
+
+
+## Configuration
+The default configuration uses SQL Server LocalDB for development. For another database server, override `ConnectionStrings__gestionMedicalContextConnection` using environment variables or local development settings.
