@@ -5,7 +5,6 @@ Focus: patients, appointments, and basic admin workflows.
 
 ![Status](https://img.shields.io/badge/status-active-success)
 ![.NET](https://img.shields.io/badge/.NET-8.0-blue)
-![License](https://img.shields.io/badge/license-MIT-lightgrey)
 
 ---
 
